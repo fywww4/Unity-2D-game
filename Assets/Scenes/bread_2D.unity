@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 478909873}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,6 +253,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &679825628 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9013434551381471685, guid: 843f8395c68a9df45b3357c851315039, type: 3}
+  m_PrefabInstance: {fileID: 1986011040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1986011040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -300,6 +305,14 @@ PrefabInstance:
     - target: {fileID: 1847594938118649919, guid: 843f8395c68a9df45b3357c851315039, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476303413123314184, guid: 843f8395c68a9df45b3357c851315039, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 679825628}
+    - target: {fileID: 3476303413123314184, guid: 843f8395c68a9df45b3357c851315039, type: 3}
+      propertyPath: jumpHeight
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5115552718814227428, guid: 843f8395c68a9df45b3357c851315039, type: 3}
       propertyPath: m_Name

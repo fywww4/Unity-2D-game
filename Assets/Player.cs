@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator animator;
     public Rigidbody2D rb;
     public float jumpHeight = 5f;
     public bool isGround = true;
@@ -31,9 +32,25 @@ public class Player : MonoBehaviour
             facingRight = true;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && isGround)
         {
             Jump();
+            isGround = false;
+            animator.SetBool("Jump", true);
+        }
+
+        if (Mathf.Abs(movement) > 0f)
+        {
+            animator.SetFloat("Run", 1f);
+        }
+        else if(movement < .1f)
+        {
+            animator.SetFloat("Run", 0f);
+        }
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("Attack");
         }
     }
 
@@ -45,5 +62,14 @@ public class Player : MonoBehaviour
     void Jump()
     {
         rb.AddForce(new Vector2 (0f, jumpHeight), ForceMode2D.Impulse);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGround = true;
+            animator.SetBool("Jump", false);
+        }
     }
 }
