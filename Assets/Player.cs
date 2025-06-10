@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
             animator.SetFloat("Run", 0f);
         }
 
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("Attack");
         }
