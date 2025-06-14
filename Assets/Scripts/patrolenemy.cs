@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class patrolenemy : MonoBehaviour
 {
+    public int maxHealth = 3;
     public bool facingLeft = true;
     public float moveSpeed = 2f;
     public Transform checkpoint;
@@ -26,6 +27,16 @@ public class patrolenemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FindFirstObjectByType<GameManager>().isGameActive == false)
+        {
+            return;
+        }
+
+        if (maxHealth <= 0)
+        {
+            Die();
+        }
+
         if (Vector2.Distance(transform.position, player.position) <= attackRange)
         {
             inRange = true;
@@ -84,9 +95,22 @@ public class patrolenemy : MonoBehaviour
 
         if (collInfo)
         {
-            Debug.Log(collInfo.transform.name);
+            if(collInfo.gameObject.GetComponent<Player>() != null)
+            {
+                collInfo.gameObject.GetComponent<Player>().TakeDamage(1);
+            }
         }
     }
+
+    public void TakeDamage(int damage)
+    {
+        if (maxHealth <= 0)
+        {
+            return;
+        }
+        maxHealth -= damage;
+    }
+
 
     private void OnDrawGizmosSelected()
     {
@@ -107,4 +131,11 @@ public class patrolenemy : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
+
+    void Die()
+    {
+        Debug.Log(this.transform.name + "Died.");
+        Destroy(this.gameObject);
+    }
+
 }

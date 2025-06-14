@@ -1,16 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public int maxHealth = 3;
+    public Text Health;
     public Animator animator;
     public Rigidbody2D rb;
-    public float jumpHeight = 5f;
     public bool isGround = true;
 
-    private float movement;
+
+    public float jumpHeight = 5f;
     public float moveSpeed = 5f;
+
+    private float movement;
     private bool facingRight = true;
+
+    public Transform attackPoint;
+    public float attackRadius = 1f;
+    public LayerMask attackLayer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +32,8 @@ public class Player : MonoBehaviour
         {
             Die();
         }
+
+        Health.text = maxHealth.ToString();
 
         movement = Input.GetAxis("Horizontal");
 
@@ -79,6 +89,28 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Attack()
+    {
+        Collider2D collInfo = Physics2D.OverlapCircle(attackPoint.position, attackRadius, attackLayer);
+        if (collInfo)
+        {
+            if (collInfo.gameObject.GetComponent<patrolenemy>() != null)
+            {
+                collInfo.gameObject.GetComponent<patrolenemy>().TakeDamage(1);
+            }
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
+    }
+
+
     public void TakeDamage(int damage)
     {
         if (maxHealth <= 0)
@@ -91,5 +123,6 @@ public class Player : MonoBehaviour
     void Die()
     {
         Debug.Log("Player Died");
+        FindFirstObjectByType<GameManager>().isGameActive = false;
     }
 }
