@@ -381,11 +381,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &679825628 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 9013434551381471685, guid: 843f8395c68a9df45b3357c851315039, type: 3}
-  m_PrefabInstance: {fileID: 1986011040}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &723072630
 GameObject:
   m_ObjectHideFlags: 0
@@ -9961,10 +9956,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1249689609373464657, guid: 843f8395c68a9df45b3357c851315039, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1847594938118649919, guid: 843f8395c68a9df45b3357c851315039, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.37
@@ -10004,14 +9995,6 @@ PrefabInstance:
     - target: {fileID: 1847594938118649919, guid: 843f8395c68a9df45b3357c851315039, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3476303413123314184, guid: 843f8395c68a9df45b3357c851315039, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 679825628}
-    - target: {fileID: 3476303413123314184, guid: 843f8395c68a9df45b3357c851315039, type: 3}
-      propertyPath: jumpHeight
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5115552718814227428, guid: 843f8395c68a9df45b3357c851315039, type: 3}
       propertyPath: m_Name
@@ -11004,9 +10987,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: potral enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4913860897748483180, guid: b9f0cceb227ddb84696291d059196ba4, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1479823183}
+    - target: {fileID: 4913860897748483180, guid: b9f0cceb227ddb84696291d059196ba4, type: 3}
+      propertyPath: attackRadius
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4998873773068790877, guid: b9f0cceb227ddb84696291d059196ba4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.05
+      value: 33.87
       objectReference: {fileID: 0}
     - target: {fileID: 4998873773068790877, guid: b9f0cceb227ddb84696291d059196ba4, type: 3}
       propertyPath: m_LocalPosition.y
