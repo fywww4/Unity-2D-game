@@ -22,7 +22,15 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        // 確保所有必要組件都被正確指派
+        if (Health == null)
+            Debug.LogError("Health Text is not assigned to Player!");
+        if (animator == null)
+            animator = GetComponent<Animator>();
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
+        if (attackPoint == null)
+            Debug.LogError("Attack Point is not assigned to Player!");
     }
 
     // Update is called once per frame
@@ -123,6 +131,15 @@ public class Player : MonoBehaviour
     void Die()
     {
         Debug.Log("Player Died");
-        FindFirstObjectByType<GameManager>().isGameActive = false;
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.isGameActive = false;
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Debug.LogError("GameManager not found in the scene!");
+        }
     }
 }
