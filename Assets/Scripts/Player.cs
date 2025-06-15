@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Text CoinText;
+    public int currentCoin = 0;
     public int maxHealth = 3;
     public Text Health;
     public Animator animator;
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
             Die();
         }
 
+        CoinText.text = currentCoin.ToString();
         Health.text = maxHealth.ToString();
 
         movement = Input.GetAxis("Horizontal");
@@ -119,6 +122,17 @@ public class Player : MonoBehaviour
         }
         maxHealth -= damage;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Coin")
+        {
+            currentCoin++;
+            other.gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Collected");
+            Destroy(other.gameObject, 1f);
+        }
+    }
+
 
     void Die()
     {
