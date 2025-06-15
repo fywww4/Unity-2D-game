@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public Text wintext;
+    public Button QuitButton;
     public Text CoinText;
     public int currentCoin = 0;
     public int maxHealth = 3;
@@ -136,6 +137,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "VictoryPoint")
         {
             wintext.gameObject.SetActive(true);
+            QuitButton.gameObject.SetActive(true);
             Time.timeScale = 0f; 
         }
     }
