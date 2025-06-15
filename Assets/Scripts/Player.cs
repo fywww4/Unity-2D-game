@@ -136,6 +136,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "VictoryPoint")
         {
             wintext.gameObject.SetActive(true);
+            Time.timeScale = 0f; 
         }
     }
 
