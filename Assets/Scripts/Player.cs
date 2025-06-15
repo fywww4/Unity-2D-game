@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Text wintext;
     public Text CoinText;
     public int currentCoin = 0;
     public int maxHealth = 3;
@@ -130,6 +131,11 @@ public class Player : MonoBehaviour
             currentCoin++;
             other.gameObject.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Collected");
             Destroy(other.gameObject, 1f);
+        }
+
+        if (other.gameObject.tag == "VictoryPoint")
+        {
+            wintext.gameObject.SetActive(true);
         }
     }
 
